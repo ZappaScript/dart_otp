@@ -15,8 +15,10 @@ abstract class Util {
   ///
   static int timeFormat({DateTime time, int interval}) {
     final _timeStr = time.millisecondsSinceEpoch.toString();
-    final _formatTime = _timeStr.substring(0, _timeStr.length - 3);
-
+    String _formatTime = _timeStr;
+    if (_timeStr.length > 3) {
+       _formatTime = _timeStr.substring(0, _timeStr.length - 3);
+    }
     return int.parse(_formatTime) ~/ interval;
   }
 
